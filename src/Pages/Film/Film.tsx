@@ -40,7 +40,7 @@ export const Film = (): JSX.Element => {
     };
   }, [id]);
 
-  if (isLoading) return <h1>Загрузка фильмов</h1>;
+  if (isLoading) return <h1>Загрузка фильма</h1>;
   if (error) return <h1>{error}</h1>;
   if (!film) return <h1>Фильм не найден</h1>;
 
