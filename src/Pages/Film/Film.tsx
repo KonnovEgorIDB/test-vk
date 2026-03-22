@@ -5,14 +5,15 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 
 import { getFilmById } from '../../Features/mockApi';
+import { useCompare } from '../../Features/useCompare';
+import { useFavorite } from '../../Features/useFavorite';
 import styles from './Film.module.css';
-import { useFavorite } from '../../Features/FavoriteContext';
-import { useCompare } from '../../Features/CompareContext';
 
 export const Film = (): JSX.Element => {
   const { id } = useParams();
-const { isFavorite, addToFavorite, removeFromFavorite } = useFavorite();
-const { isInCompare, addToCompare, removeFromCompare, compare } = useCompare();
+  const { isFavorite, addToFavorite, removeFromFavorite } = useFavorite();
+  const { isInCompare, addToCompare, removeFromCompare, compare } =
+    useCompare();
 
   const [film, setFilm] = useState<FilmType | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -49,26 +50,37 @@ const { isInCompare, addToCompare, removeFromCompare, compare } = useCompare();
     poster: film.poster,
     rating: film.rating,
     year: film.year,
-};
+  };
 
-const handleFavorite = () => {
-    isFavorite(film.id) ? removeFromFavorite(film.id) : addToFavorite(filmShort);
-};
+  const handleFavorite = () => {
+    if (isFavorite(film.id)) {
+      removeFromFavorite(film.id);
+    } else {
+      addToFavorite(filmShort);
+    }
+  };
 
-const handleCompare = () => {
-    isInCompare(film.id) ? removeFromCompare(film.id) : addToCompare(filmShort);
-};
+  const handleCompare = () => {
+    if (isInCompare(film.id)) {
+      removeFromCompare(film.id);
+    } else {
+      addToCompare(filmShort);
+    }
+  };
 
   return (
     <section className={styles.section}>
       <div className={styles.card}>
-
         <h1 className={styles.title}>
-            {film.name ? `${film.name} ${id}` : 'Название отсутствует'}
+          {film.name ? `${film.name} ${id}` : 'Название отсутствует'}
         </h1>
-        
-        <p className={styles.description}>{film.description ? `${film.description}` : 'Описание фильма отсутствует'} </p>
-        
+
+        <p className={styles.description}>
+          {film.description
+            ? `${film.description}`
+            : 'Описание фильма отсутствует'}{' '}
+        </p>
+
         {film.poster?.url ? (
           <img
             className={styles.poster}
@@ -84,12 +96,11 @@ const handleCompare = () => {
 
         <p className={styles.subtitle}>Рейтинг</p>
 
-        <p className={styles.meta}>{film.rating?.kp !== undefined ? 
-          `${film.rating.kp}/10`
-        : 
-          'Рейтинг отсутствует'
-        }</p>
-        
+        <p className={styles.meta}>
+          {film.rating?.kp !== undefined
+            ? `${film.rating.kp}/10`
+            : 'Рейтинг отсутствует'}
+        </p>
 
         <p className={styles.subtitle}>Жанр</p>
         <ul className={styles.genresList}>
@@ -99,19 +110,23 @@ const handleCompare = () => {
         </ul>
 
         <div className={styles.actions}>
-            <button
-                className={`${styles.btn} ${styles.btnPrimary}`}
-                onClick={handleCompare}
-                disabled={!isInCompare(film.id) && compare.length >= 2}
-            >
-                {isInCompare(film.id) ? 'Убрать из сравнения' : 'Добавить в сравнение'}
-            </button>
-            <button
-                className={`${styles.btn} ${styles.btnSecondary}`}
-                onClick={handleFavorite}
-            >
-                {isFavorite(film.id) ? 'Убрать из избранного' : 'Добавить в избранное'}
-            </button>
+          <button
+            className={`${styles.btn} ${styles.btnPrimary}`}
+            onClick={handleCompare}
+            disabled={!isInCompare(film.id) && compare.length >= 2}
+          >
+            {isInCompare(film.id)
+              ? 'Убрать из сравнения'
+              : 'Добавить в сравнение'}
+          </button>
+          <button
+            className={`${styles.btn} ${styles.btnSecondary}`}
+            onClick={handleFavorite}
+          >
+            {isFavorite(film.id)
+              ? 'Убрать из избранного'
+              : 'Добавить в избранное'}
+          </button>
         </div>
       </div>
     </section>

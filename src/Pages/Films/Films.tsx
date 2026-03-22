@@ -12,7 +12,7 @@ export const Films = (): JSX.Element => {
 
   useEffect(() => {
     getData().then((result) => {
-        console.log(result.docs);
+      console.log(result.docs);
       setFilms(result.docs);
     });
   }, []);
@@ -21,36 +21,39 @@ export const Films = (): JSX.Element => {
     <>
       <h1>Здесь подробная инфа о фильмах</h1>
       <ul className={styles.list}>
-            {films.map((film) => (
-                <li key={film.id}>
-                    <Link to={`/films/${film.id}`}>
-                        <article className={styles.card}>
-                            {film.poster?.url ? (
-                                <img
-                                    className={styles.card__img}
-                                    src={film.poster.url}
-                                    alt='Постер фильма'
-                                />
-                            ) : (
-                                <div className={styles.card__placeholder}>Постер отсутствует</div>
-                            )}
-                            <div className={styles.card__body}>
-                                {film.name ? 
-                                    <h2 className={styles.card__title}>{film.name}</h2> :
-                                    <h2 className={styles.card__title}>Нет названия</h2>
-                                }
-                                <p className={styles.card__meta}>{film.year}</p>
-                                {film.rating?.kp !== undefined ? (
-                                    <p className={styles.card__meta}>{film.rating.kp}/10</p>
-                                ) : (
-                                    <p className={styles.card__meta}>Рейтинг отсутствует</p>
-                                )}
-                            </div>
-                        </article>
-                    </Link>
-                </li>
-            ))}
-        </ul>
+        {films.map((film) => (
+          <li key={film.id}>
+            <Link to={`/films/${film.id}`}>
+              <article className={styles.card}>
+                {film.poster?.url ? (
+                  <img
+                    className={styles.card__img}
+                    src={film.poster.url}
+                    alt='Постер фильма'
+                  />
+                ) : (
+                  <div className={styles.card__placeholder}>
+                    Постер отсутствует
+                  </div>
+                )}
+                <div className={styles.card__body}>
+                  {film.name ? (
+                    <h2 className={styles.card__title}>{film.name}</h2>
+                  ) : (
+                    <h2 className={styles.card__title}>Нет названия</h2>
+                  )}
+                  <p className={styles.card__meta}>{film.year}</p>
+                  {film.rating?.kp !== undefined ? (
+                    <p className={styles.card__meta}>{film.rating.kp}/10</p>
+                  ) : (
+                    <p className={styles.card__meta}>Рейтинг отсутствует</p>
+                  )}
+                </div>
+              </article>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </>
   );
 };
