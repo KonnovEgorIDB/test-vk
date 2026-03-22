@@ -12,6 +12,7 @@ export const Films = (): JSX.Element => {
 
   useEffect(() => {
     getData().then((result) => {
+        console.log(result.docs);
       setFilms(result.docs);
     });
   }, []);
@@ -34,7 +35,10 @@ export const Films = (): JSX.Element => {
                                 <div className={styles.card__placeholder}>Постер отсутствует</div>
                             )}
                             <div className={styles.card__body}>
-                                <h2 className={styles.card__title}>{film.name}</h2>
+                                {film.name ? 
+                                    <h2 className={styles.card__title}>{film.name}</h2> :
+                                    <h2 className={styles.card__title}>Нет названия</h2>
+                                }
                                 <p className={styles.card__meta}>{film.year}</p>
                                 {film.rating?.kp !== undefined ? (
                                     <p className={styles.card__meta}>{film.rating.kp}/10</p>
