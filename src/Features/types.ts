@@ -45,6 +45,19 @@ export interface FilmsResponse {
   hasPrev: boolean;
 }
 
+export interface FilmCompare {
+  id: number;
+  name?: string;
+  poster?: Poster;
+  rating: Rating;
+  year?: number;
+  movieLength?: number;
+  ageRating?: number;
+  genres?: Genre[];
+  countries?: Country[];
+  technology?: Technology;
+}
+
 export interface Technology {
   hasImax: boolean;
   has3D: boolean;

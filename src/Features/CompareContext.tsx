@@ -1,11 +1,11 @@
-import type { FilmShort } from './types';
+import type { FilmCompare } from './types';
 import type { JSX } from 'react';
 
 import { createContext, useEffect, useState } from 'react';
 
 interface CompareContextType {
-  compare: FilmShort[];
-  addToCompare: (film: FilmShort) => void;
+  compare: FilmCompare[];
+  addToCompare: (film: FilmCompare) => void;
   removeFromCompare: (id: number) => void;
   isInCompare: (id: number) => boolean;
 }
@@ -17,7 +17,7 @@ export const CompareProvider = ({
 }: {
   children: React.ReactNode;
 }): JSX.Element => {
-  const [compare, setCompare] = useState<FilmShort[]>(() => {
+  const [compare, setCompare] = useState<FilmCompare[]>(() => {
     const saved = localStorage.getItem('compare');
     return saved ? JSON.parse(saved) : [];
   });
@@ -26,7 +26,7 @@ export const CompareProvider = ({
     localStorage.setItem('compare', JSON.stringify(compare));
   }, [compare]);
 
-  const addToCompare = (film: FilmShort) => {
+  const addToCompare = (film: FilmCompare) => {
     if (compare.length >= 2) return;
     setCompare((prev) => [...prev, film]);
   };

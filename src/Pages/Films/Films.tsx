@@ -19,7 +19,8 @@ export const Films = (): JSX.Element => {
 
   return (
     <>
-      <h1>Здесь подробная инфа о фильмах</h1>
+      <h1>Сайт находится на стадии разработки</h1>
+      <h1>Фильмы</h1>
       <ul className={styles.list}>
         {films.map((film) => (
           <li key={film.id}>

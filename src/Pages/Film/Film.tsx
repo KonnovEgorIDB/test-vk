@@ -10,7 +10,7 @@ import { useFavorite } from '../../Features/useFavorite';
 import styles from './Film.module.css';
 
 export const Film = (): JSX.Element => {
-  const { id } = useParams();
+  const { id } = useParams<string>();
   const { isFavorite, addToFavorite, removeFromFavorite } = useFavorite();
   const { isInCompare, addToCompare, removeFromCompare, compare } =
     useCompare();
@@ -24,16 +24,17 @@ export const Film = (): JSX.Element => {
 
     if (!cancelled) setIsLoading(true);
 
-    getFilmById()
-      .then((res) => {
-        if (!cancelled) setFilm(res);
-      })
-      .catch((err: Error) => {
-        if (!cancelled) setError(err.message);
-      })
-      .finally(() => {
-        if (!cancelled) setIsLoading(false);
-      });
+    if (id)
+      getFilmById(id)
+        .then((res) => {
+          if (!cancelled) setFilm(res);
+        })
+        .catch((err: Error) => {
+          if (!cancelled) setError(err.message);
+        })
+        .finally(() => {
+          if (!cancelled) setIsLoading(false);
+        });
 
     return () => {
       cancelled = true;

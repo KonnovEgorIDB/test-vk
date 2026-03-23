@@ -685,108 +685,253 @@ const initialState: FilmsResponse = {
   hasNext: true,
   hasPrev: false,
 };
-const currentFilm: Film = {
-  lists: [],
-  id: 11643251,
-  ageRating: 12,
-  alternativeName: 'Хоровод',
-  backdrop: {
-    url: 'https://avatars.mds.yandex.net/get-ott/17636663/2a0000019d059c8d488814d2cde81ba17af6/1344x756',
-    previewUrl:
-      'https://avatars.mds.yandex.net/get-ott/17636663/2a0000019d059c8d488814d2cde81ba17af6/678x380',
-  },
-  countries: [
-    {
-      name: 'Россия',
+const films: Film[] = [
+  {
+    lists: [],
+    id: 11643251,
+    ageRating: 12,
+    alternativeName: 'Хоровод',
+    backdrop: {
+      url: 'https://avatars.mds.yandex.net/get-ott/17636663/2a0000019d059c8d488814d2cde81ba17af6/1344x756',
+      previewUrl:
+        'https://avatars.mds.yandex.net/get-ott/17636663/2a0000019d059c8d488814d2cde81ba17af6/678x380',
     },
-  ],
-  description:
-    'Режиссер Ульяна Анохина на протяжении трёх лет снимает группу «Бонд с кнопкой» в самых разных ситуациях и обстоятельствах: в быту, на репетициях, в туре и на фестивалях. В объективе камеры: рождение одной из песен в студии, хроника первого исполнения другой, воплощение с детским хором третьей. А затем наступает время концерта: свыше шести тысяч зрителей, группа «Бонд с кнопкой», хор Florium, детский хор из города Выкса и струнный квартет. Больше сорока человек на сцене в пиковые моменты выступления.',
-  genres: [
-    {
-      name: 'концерт',
-    },
-    {
-      name: 'музыка',
-    },
-  ],
-  hasOttFeatures: true,
-  hasSkippableFragments: false,
-  isSeries: false,
-  movieLength: 49,
-  name: 'Хоровод',
-  persons: [
-    {
-      id: 10340272,
-      name: 'Ульяна Анохина',
-      photo:
-        'https://st.kp.yandex.net/images/actor_iphone/iphone360_10340272.jpg',
-      profession: 'режиссеры',
-      enProfession: 'director',
-    },
-    {
-      id: 10416471,
-      name: 'Илья Золотухин',
-      photo:
-        'https://st.kp.yandex.net/images/actor_iphone/iphone360_10416471.jpg',
-      profession: 'сценаристы',
-      enProfession: 'writer',
-    },
-  ],
-  poster: {
-    url: 'https://avatars.mds.yandex.net/get-kinopoisk-image/4483445/4804d115-392e-4536-88a4-5076b1ae6ffe/600x900',
-    previewUrl:
-      'https://avatars.mds.yandex.net/get-kinopoisk-image/4483445/4804d115-392e-4536-88a4-5076b1ae6ffe/300x450',
-  },
-  rating: {
-    kp: 0,
-    imdb: 0,
-    tmdb: 0,
-    filmCritics: 0,
-    russianFilmCritics: 0,
-    await: 0,
-  },
-  technology: {
-    hasImax: false,
-    has3D: false,
-  },
-  ticketsOnSale: false,
-  type: 'movie',
-  typeNumber: 1,
-  updatedAt: '2026-03-20T18:43:42.461Z',
-  votes: {
-    kp: 0,
-    imdb: 0,
-    tmdb: 0,
-    filmCritics: 0,
-    russianFilmCritics: 0,
-    await: 0,
-  },
-  watchability: {
-    items: [
+    countries: [{ name: 'Россия' }],
+    description:
+      'Режиссер Ульяна Анохина на протяжении трёх лет снимает группу «Бонд с кнопкой» в самых разных ситуациях и обстоятельствах: в быту, на репетициях, в туре и на фестивалях.',
+    genres: [{ name: 'концерт' }, { name: 'музыка' }],
+    hasOttFeatures: true,
+    hasSkippableFragments: false,
+    isSeries: false,
+    movieLength: 49,
+    name: 'Хоровод',
+    persons: [
       {
-        name: 'Kinopoisk HD',
-        logo: {
-          url: 'https://yastatic.net/s3/kinopoisk-frontend/hd-www/release/apple-touch-icon-180x180.png',
-        },
-        url: 'https://hd.kinopoisk.ru/?rt=ea4a9f4efb9240efae4f6de1dd635dd3',
+        id: 10340272,
+        name: 'Ульяна Анохина',
+        photo:
+          'https://st.kp.yandex.net/images/actor_iphone/iphone360_10340272.jpg',
+        profession: 'режиссеры',
+        enProfession: 'director',
+      },
+      {
+        id: 10416471,
+        name: 'Илья Золотухин',
+        photo:
+          'https://st.kp.yandex.net/images/actor_iphone/iphone360_10416471.jpg',
+        profession: 'сценаристы',
+        enProfession: 'writer',
       },
     ],
-  },
-  year: 2026,
-  externalId: {
-    kpHD: 'ea4a9f4efb9240efae4f6de1dd635dd3',
-  },
-  names: [
-    {
-      name: 'Хоровод',
-      language: 'RU',
-      type: 'Russian title on kinopoisk',
+    poster: {
+      url: 'https://avatars.mds.yandex.net/get-kinopoisk-image/4483445/4804d115-392e-4536-88a4-5076b1ae6ffe/600x900',
+      previewUrl:
+        'https://avatars.mds.yandex.net/get-kinopoisk-image/4483445/4804d115-392e-4536-88a4-5076b1ae6ffe/300x450',
     },
-  ],
-  shortDescription:
-    '«Мало было», «Камушки», «Сквозняки» и «Маяки». Фильм-концерт одной из главных новых российских групп',
-};
+    rating: {
+      kp: 7.2,
+      imdb: 6.8,
+      tmdb: 6.5,
+      filmCritics: 0,
+      russianFilmCritics: 0,
+      await: 0,
+    },
+    technology: { hasImax: false, has3D: false },
+    ticketsOnSale: false,
+    type: 'movie',
+    typeNumber: 1,
+    updatedAt: '2026-03-20T18:43:42.461Z',
+    votes: {
+      kp: 0,
+      imdb: 0,
+      tmdb: 0,
+      filmCritics: 0,
+      russianFilmCritics: 0,
+      await: 0,
+    },
+    watchability: {
+      items: [
+        {
+          name: 'Kinopoisk HD',
+          logo: {
+            url: 'https://yastatic.net/s3/kinopoisk-frontend/hd-www/release/apple-touch-icon-180x180.png',
+          },
+          url: 'https://hd.kinopoisk.ru/?rt=ea4a9f4efb9240efae4f6de1dd635dd3',
+        },
+      ],
+    },
+    year: 2026,
+    externalId: { kpHD: 'ea4a9f4efb9240efae4f6de1dd635dd3' },
+    names: [
+      { name: 'Хоровод', language: 'RU', type: 'Russian title on kinopoisk' },
+    ],
+    shortDescription:
+      '«Мало было», «Камушки», «Сквозняки» и «Маяки». Фильм-концерт одной из главных новых российских групп',
+  },
+  {
+    lists: [],
+    id: 11534195,
+    ageRating: 16,
+    alternativeName: 'In Pursuit of Jade',
+    backdrop: {
+      url: 'https://avatars.mds.yandex.net/get-kinopoisk-image/4716873/3e79771c-5b21-446a-8cc9-77defd20a80f/1344x756',
+      previewUrl:
+        'https://avatars.mds.yandex.net/get-kinopoisk-image/4716873/3e79771c-5b21-446a-8cc9-77defd20a80f/678x380',
+    },
+    countries: [{ name: 'Китай' }, { name: 'Гонконг' }],
+    description:
+      'Детектив Чэнь преследует опасного контрабандиста нефрита через несколько стран. На пути его ждут предательства, перестрелки и неожиданные союзники.',
+    genres: [{ name: 'боевик' }, { name: 'триллер' }, { name: 'криминал' }],
+    hasOttFeatures: false,
+    hasSkippableFragments: false,
+    isSeries: false,
+    movieLength: 112,
+    name: 'В погоне за нефритом',
+    persons: [
+      {
+        id: 20341100,
+        name: 'Джеки Чан',
+        photo:
+          'https://st.kp.yandex.net/images/actor_iphone/iphone360_20341100.jpg',
+        profession: 'актеры',
+        enProfession: 'actor',
+      },
+      {
+        id: 20341200,
+        name: 'Лю Вэй',
+        photo:
+          'https://st.kp.yandex.net/images/actor_iphone/iphone360_20341200.jpg',
+        profession: 'режиссеры',
+        enProfession: 'director',
+      },
+    ],
+    poster: {
+      url: 'https://avatars.mds.yandex.net/get-kinopoisk-image/4716873/3e79771c-5b21-446a-8cc9-77defd20a80f/600x900',
+      previewUrl:
+        'https://avatars.mds.yandex.net/get-kinopoisk-image/4716873/3e79771c-5b21-446a-8cc9-77defd20a80f/300x450',
+    },
+    rating: {
+      kp: 6.4,
+      imdb: 7.8,
+      tmdb: 7.1,
+      filmCritics: 0,
+      russianFilmCritics: 0,
+      await: 0,
+    },
+    technology: { hasImax: true, has3D: false },
+    ticketsOnSale: true,
+    type: 'movie',
+    typeNumber: 1,
+    updatedAt: '2026-03-18T10:00:00.000Z',
+    votes: {
+      kp: 0,
+      imdb: 0,
+      tmdb: 0,
+      filmCritics: 0,
+      russianFilmCritics: 0,
+      await: 0,
+    },
+    watchability: { items: [] },
+    year: 2026,
+    externalId: { kpHD: undefined },
+    names: [
+      {
+        name: 'В погоне за нефритом',
+        language: 'RU',
+        type: 'Russian title on kinopoisk',
+      },
+    ],
+    shortDescription:
+      'Захватывающий азиатский боевик о погоне за бесценными артефактами',
+  },
+  {
+    lists: [],
+    id: 11551151,
+    ageRating: 18,
+    alternativeName: 'Leap Year',
+    backdrop: {
+      url: 'https://avatars.mds.yandex.net/get-kinopoisk-image/9784475/a3035612-8a1c-4ba9-8de0-069b92f23ce1/1344x756',
+      previewUrl:
+        'https://avatars.mds.yandex.net/get-kinopoisk-image/9784475/a3035612-8a1c-4ba9-8de0-069b92f23ce1/678x380',
+    },
+    countries: [{ name: 'Россия' }],
+    description:
+      'Молодая женщина обнаруживает, что её жизнь повторяется каждые четыре года — в одну и ту же дату, 29 февраля. Каждый раз она оказывается в новом городе с теми же людьми, но другими воспоминаниями.',
+    genres: [{ name: 'драма' }, { name: 'фантастика' }],
+    hasOttFeatures: true,
+    hasSkippableFragments: false,
+    isSeries: false,
+    movieLength: 98,
+    name: 'Високосный день',
+    persons: [
+      {
+        id: 30451100,
+        name: 'Анна Михайлова',
+        photo:
+          'https://st.kp.yandex.net/images/actor_iphone/iphone360_30451100.jpg',
+        profession: 'актеры',
+        enProfession: 'actor',
+      },
+      {
+        id: 30451200,
+        name: 'Сергей Петров',
+        photo:
+          'https://st.kp.yandex.net/images/actor_iphone/iphone360_30451200.jpg',
+        profession: 'режиссеры',
+        enProfession: 'director',
+      },
+    ],
+    poster: {
+      url: 'https://avatars.mds.yandex.net/get-kinopoisk-image/9784475/a3035612-8a1c-4ba9-8de0-069b92f23ce1/600x900',
+      previewUrl:
+        'https://avatars.mds.yandex.net/get-kinopoisk-image/9784475/a3035612-8a1c-4ba9-8de0-069b92f23ce1/300x450',
+    },
+    rating: {
+      kp: 8.1,
+      imdb: 8.4,
+      tmdb: 7.9,
+      filmCritics: 0,
+      russianFilmCritics: 0,
+      await: 0,
+    },
+    technology: { hasImax: false, has3D: false },
+    ticketsOnSale: false,
+    type: 'movie',
+    typeNumber: 1,
+    updatedAt: '2026-03-15T12:00:00.000Z',
+    votes: {
+      kp: 0,
+      imdb: 0,
+      tmdb: 0,
+      filmCritics: 0,
+      russianFilmCritics: 0,
+      await: 0,
+    },
+    watchability: {
+      items: [
+        {
+          name: 'Kinopoisk HD',
+          logo: {
+            url: 'https://yastatic.net/s3/kinopoisk-frontend/hd-www/release/apple-touch-icon-180x180.png',
+          },
+          url: 'https://hd.kinopoisk.ru/?rt=leap2025',
+        },
+      ],
+    },
+    year: 2025,
+    externalId: { kpHD: 'leap2025' },
+    names: [
+      {
+        name: 'Високосный день',
+        language: 'RU',
+        type: 'Russian title on kinopoisk',
+      },
+    ],
+    shortDescription:
+      'Мистическая драма о женщине, застрявшей в петле високосных лет',
+  },
+];
+
 export const getData = async (): Promise<FilmsResponse> => {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -795,10 +940,14 @@ export const getData = async (): Promise<FilmsResponse> => {
   });
 };
 
-export const getFilmById = async (): Promise<Film> => {
-  return new Promise((resolve) => {
+export const getFilmById = async (id: string): Promise<Film> => {
+  return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve(currentFilm);
+      const film = films.find((film) => film.id === Number(id));
+      if (film) resolve(film);
+      else reject(new Error('Фильм не найден'));
     }, 1000);
   });
 };
+
+//11643251 11534195 11551151
