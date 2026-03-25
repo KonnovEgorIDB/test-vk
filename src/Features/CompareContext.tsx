@@ -27,8 +27,11 @@ export const CompareProvider = ({
   }, [compare]);
 
   const addToCompare = (film: FilmCompare) => {
-    if (compare.length >= 2) return;
-    setCompare((prev) => [...prev, film]);
+    if (compare.length < 2) {
+      setCompare((prev) => [...prev, film]);
+    } else {
+      setCompare((prev) => [prev[0], film]);
+    }
   };
 
   const removeFromCompare = (id: number) => {
